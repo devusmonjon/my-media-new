@@ -7,7 +7,9 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <div className="text-purple-600 font-bold text-2xl">Streamvid</div>
+            <div className="text-purple-600 font-bold text-2xl">
+              <img src="/logo.png" alt="Logo" width={150} />
+            </div>
             <div className="text-sm text-gray-400">Connect with us</div>
             <div className="flex gap-4">
               <Link href="#" className="text-gray-400 hover:text-purple-400">
@@ -86,8 +88,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="text-sm text-gray-400">Copyright © 2024 StreamVid. All rights reserved.</div>
+        <div className="mt-12 pt-8 border-t border-border/40 text-center text-sm text-muted-foreground">
+          <p className="flex items-center justify-center gap-1">
+            &copy; {new Date().getFullYear()}{" "}
+            <img
+              src="/logo.png"
+              alt="MYMEDIA logo"
+              className="h-[1em] w-auto mx-1 inline-block"
+            />
+             Barcha huquqlar himoyalangan.
+          </p>
         </div>
       </div>
     </footer>

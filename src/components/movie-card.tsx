@@ -65,10 +65,7 @@ export default function MovieCard({
 
   const handlePlayClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    toast({
-      title: "Starting Playback",
-      description: `Now playing ${title}`,
-    });
+    router.push(`/movies/${imageId}`);
   };
 
   const handleWatchLater = (e: React.MouseEvent) => {
@@ -126,7 +123,7 @@ export default function MovieCard({
                 size='sm'
                 variant={"ghost"}
                 className='w-full hover:bg-white/90 hover:text-black'
-                onClick={() => router.push(`/movie/${imageId}`)}
+                onClick={() => router.push(`/movies/${imageId}`)}
               >
                 <PlayIcon className='w-4 h-4' />
               </Button>

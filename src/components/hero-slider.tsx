@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 interface Movie {
   id: number;
@@ -23,6 +24,7 @@ interface Movie {
   description: string;
   trailerUrl: string;
   slider_duration: number;
+  type: "movie" | "series";
 }
 
 const movies: Movie[] = [
@@ -37,6 +39,7 @@ const movies: Movie[] = [
       "A young mother and her young daughter, who are in love, meet the love of their family.",
     trailerUrl: "/trailers/nevertheless.mp4",
     slider_duration: 170.271927 * 1000,
+    type: "series"
   },
   {
     id: 2,
@@ -49,6 +52,7 @@ const movies: Movie[] = [
       "Return to a world of two realities: one, everyday life; the other, what lies behind it.",
     trailerUrl: "/trailers/trailer.mp4",
     slider_duration: 10000,
+    type: "movie"
   },
   {
     id: 3,
@@ -61,6 +65,7 @@ const movies: Movie[] = [
       "A young mother and her young daughter, who are in love, meet the love of their family.",
     trailerUrl: "/trailers/nevertheless.mp4",
     slider_duration: 170.271927 * 1000,
+    type: "series"
   },
   {
     id: 4,
@@ -73,6 +78,7 @@ const movies: Movie[] = [
       "A noble family becomes embroiled in a war for control over the galaxy's most valuable asset.",
     trailerUrl: "/trailers/trailer.mp4",
     slider_duration: 10000,
+    type: "movie"
   },
   {
     id: 5,
@@ -85,6 +91,7 @@ const movies: Movie[] = [
       "A young mother and her young daughter, who are in love, meet the love of their family.",
     trailerUrl: "/trailers/nevertheless.mp4",
     slider_duration: 170.271927 * 1000,
+    type: "series"
   },
   {
     id: 6,
@@ -97,6 +104,7 @@ const movies: Movie[] = [
       "A noble family becomes embroiled in a war for control over the galaxy's most valuable asset.",
     trailerUrl: "/trailers/trailer.mp4",
     slider_duration: 10000,
+    type: "movie"
   },
   {
     id: 7,
@@ -109,6 +117,7 @@ const movies: Movie[] = [
       "A young mother and her young daughter, who are in love, meet the love of their family.",
     trailerUrl: "/trailers/nevertheless.mp4",
     slider_duration: 170.271927 * 1000,
+    type: "series"
   },
 ];
 
@@ -119,6 +128,8 @@ export default function HeroSlider() {
   const [paused, setPaused] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { toast } = useToast();
+
+  const router = useRouter();
 
   useEffect(() => {
     const arrowEventListener = (e: KeyboardEvent) => {
@@ -166,10 +177,7 @@ export default function HeroSlider() {
   };
 
   const handlePlayNow = () => {
-    toast({
-      title: "Starting Playback",
-      description: `Now playing ${movies[currentSlide].title}`,
-    });
+    router.push(`/${movies[currentSlide].type === "movie" ? "movies" : "series"}/${movies[currentSlide].id}`);
   };
 
   const handleWatchLater = () => {
