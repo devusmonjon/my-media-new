@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Search, Globe, Menu, X } from "lucide-react"
 import Link from "next/link"
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true)
@@ -72,7 +73,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2">
-              <div className="text-purple-600 font-bold text-2xl">Streamvid</div>
+              <div className="text-purple-600 font-bold text-2xl">
+                <Image src="/logo.png" alt="logo" width={200} height={40} />
+              </div>
             </Link>
             <div className="hidden md:flex items-center gap-6">
               <Link href="#" className="text-sm hover:text-purple-400 duration-300">
