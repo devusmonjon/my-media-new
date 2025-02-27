@@ -1,23 +1,15 @@
-import mongoose, { Types } from "mongoose";
+import mongoose from "mongoose";
 
-const categoriesSchema = new mongoose.Schema(
+const genresSchema = new mongoose.Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
       unique: true,
     },
-    description: {
-      type: String,
-      required: false,
-    },
-    cover: {
-      type: String,
-      required: true,
-    }
   },
   { timestamps: true }
 );
 
-const Categories = mongoose.models.Categories || mongoose.model("Categories", categoriesSchema);
-export default Categories;
+const Genres = mongoose.models.Genres || mongoose.model("Genres", genresSchema);
+export default Genres;

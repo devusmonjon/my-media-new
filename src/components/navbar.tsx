@@ -68,7 +68,7 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className="fixed top-0 w-full z-50"
+      className="fixed top-0 w-full z-[9999999999]"
       initial={{ y: 0, backgroundColor: navbarBackground, backdropFilter: navbarBackdropFilter }}
       animate={{
         y: isVisible ? 0 : "-100%",
