@@ -7,6 +7,7 @@ import { Search, Globe, Menu, X } from "lucide-react"
 import Link from "next/link"
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true)
@@ -14,6 +15,13 @@ export default function Navbar() {
   const [hasBackground, setHasBackground] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
+
+  const pathname = usePathname()
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false)
+    }
+  }, [pathname])
 
   const { scrollY } = useScroll()
 
@@ -24,7 +32,7 @@ export default function Navbar() {
       setIsVisible(false)
     }
     setLastScrollY(latest)
-    setHasBackground(latest > 50)
+    setHasBackground(latest > 0)
   })
 
   const toggleMobileMenu = () => {
@@ -78,17 +86,17 @@ export default function Navbar() {
               </div>
             </Link>
             <div className="hidden md:flex items-center gap-6">
-              <Link href="#" className="text-sm hover:text-purple-400 duration-300">
+              <Link href="/" className="text-sm hover:text-purple-400 duration-300">
                 Home
               </Link>
-              <Link href="#" className="text-sm hover:text-purple-400 duration-300">
-                Features
+              <Link href="/movies" className="text-sm hover:text-purple-400 duration-300">
+                Movies
               </Link>
-              <Link href="#" className="text-sm hover:text-purple-400 duration-300">
-                Pages
+              <Link href="/series" className="text-sm hover:text-purple-400 duration-300">
+                Series
               </Link>
-              <Link href="#" className="text-sm hover:text-purple-400 duration-300">
-                Blog
+              <Link href="/categories" className="text-sm hover:text-purple-400 duration-300">
+                Categories
               </Link>
             </div>
           </div>
@@ -152,17 +160,17 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              <Link href="#" className="text-sm hover:text-purple-400">
+              <Link href="/" className="text-sm hover:text-purple-400">
                 Home
               </Link>
-              <Link href="#" className="text-sm hover:text-purple-400">
-                Features
+              <Link href="/movies" className="text-sm hover:text-purple-400">
+                Movies
               </Link>
-              <Link href="#" className="text-sm hover:text-purple-400">
-                Pages
+              <Link href="/series" className="text-sm hover:text-purple-400">
+                Series
               </Link>
-              <Link href="#" className="text-sm hover:text-purple-400">
-                Blog
+              <Link href="/categories" className="text-sm hover:text-purple-400">
+                Categories
               </Link>
               <div className="relative w-full flex items-center">
                 <Input

@@ -246,7 +246,7 @@ export default function MoviesPage() {
                   <Play className="mr-2 h-4 w-4" />
                   Play Now
                 </Button>
-                <Button variant="outline" onClick={() => handleWatchLater(selectedMovie)}>
+                <Button variant="secondary" onClick={() => handleWatchLater(selectedMovie)} className="text-black">
                   <Plus className="mr-2 h-4 w-4" />
                   Watch Later
                 </Button>
@@ -273,7 +273,7 @@ export default function MoviesPage() {
             </div>
             <div className="flex items-center gap-4">
               <div className="text-xl font-semibold">STREAMING ON OCT 15</div>
-              <Button variant="outline">Watch Trailer</Button>
+              <Button variant="secondary" className="text-black">Watch Trailer</Button>
             </div>
           </div>
         </section>
@@ -307,7 +307,7 @@ export default function MoviesPage() {
                         <Button
                           size="sm"
                           variant="outline"
-                          className="border-white text-white hover:bg-white/20"
+                          className="border-white text-black"
                           onClick={() => handleWatchLater(movie)}
                         >
                           <Plus className="h-4 w-4" />
