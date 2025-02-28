@@ -35,6 +35,12 @@ const moviesSchema = new mongoose.Schema(
         ref: "Tags",
         default: [],
     },
+    country: {
+        type: Types.ObjectId,
+        required: false,
+        ref: "Countries",
+        default: null
+    },
     cover: {
         type: String,
         required: true,

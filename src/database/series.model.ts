@@ -29,6 +29,12 @@ const seriesSchema = new mongoose.Schema(
         ref: "Genres",
         default: [],
     },
+    country: {
+        type: Types.ObjectId,
+        required: false,
+        ref: "Countries",
+        default: null,
+    },
     tags: {
         type: [Types.ObjectId],
         required: false,
